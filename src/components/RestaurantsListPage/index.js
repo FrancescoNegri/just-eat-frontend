@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ActivityIndicator, Button, ListView, Text, View } from 'react-native';
+const config = require("../../../config.json");
 
 export default class RestaurantsListPage extends Component {
 
@@ -12,7 +13,7 @@ export default class RestaurantsListPage extends Component {
 
     componentDidMount() {
         const { navigate } = this.props.navigation;
-        return fetch('https://just-eat-backend-francesconegri.c9users.io:8080/restaurants')
+        return fetch(config["API_URL"] + '/restaurants')
             .then((response) => {
                 if (response.status === 200) return response.json()
                 else alert("API unreachable!");
