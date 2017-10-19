@@ -52,7 +52,7 @@ export default class RestaurantsListPage extends Component {
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) => <Button title={rowData["NAME"]} onPress={() => {
-                        navigate('RestaurantDetails', { id: rowData["ID"] });
+                        navigate('RestaurantDetails', { id: rowData["ID"], name: rowData["NAME"] });
                     }} />}
                 />
             </View>
