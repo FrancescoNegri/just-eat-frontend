@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, Button, ListView, Text, View } from 'react-native';
+import { ActivityIndicator, Button, Image, ListView, Text, View } from 'react-native';
 const config = require("../../../config.json");
 
 export default class RestaurantsListPage extends Component {
@@ -51,9 +51,14 @@ export default class RestaurantsListPage extends Component {
             <View style={{ flex: 1, paddingTop: 20 }}>
                 <ListView
                     dataSource={this.state.dataSource}
-                    renderRow={(rowData) => <Button title={rowData["NAME"]} onPress={() => {
-                        navigate('RestaurantDetails', { id: rowData["ID"], name: rowData["NAME"] });
-                    }} />}
+                    renderRow={(rowData) =>
+                        <View>
+                            <Button title={rowData["NAME"]} onPress={() => {
+                                navigate('RestaurantDetails', { id: rowData["ID"], name: rowData["NAME"] });
+                            }} />
+                            <Image style={{ width: 50, height: 50 }} source={{ uri: 'http:' + rowData["LOGO"] }} />
+                        </View>
+                    }
                 />
             </View>
         );

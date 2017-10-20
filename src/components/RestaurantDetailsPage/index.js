@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, Button, ListView, Text, View } from 'react-native';
+import { ActivityIndicator, Button, Image, ListView, Text, View } from 'react-native';
 const config = require("../../../config.json");
 
 export default class RestaurantMenuPage extends Component {
@@ -52,7 +52,10 @@ export default class RestaurantMenuPage extends Component {
 
         return (
             <View style={{ flex: 1, paddingTop: 20 }}>
-                <Text>{this.state["data"]["NAME"]}</Text>
+                <Text>{this.state.data["NAME"]}</Text>
+                <Text>{this.state.data["CATEGORY"]}</Text>
+                <Text>Rating: {this.state.data["RATING"]}/6</Text>
+                <Image style={{ width: 100, height: 100 }} source={{ uri: 'http:' + this.state.data["LOGO"] }} />
                 <Button title="Menù" onPress={() => {
                     navigate('RestaurantMenu', { menu: this.state.data["MENU"], name: this.state.data["NAME"] });
                 }} />
