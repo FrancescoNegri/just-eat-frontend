@@ -3,7 +3,9 @@ import { ActivityIndicator, Button, Image, ListView, Text, View } from 'react-na
 const config = require("../../../config.json");
 
 export default class RestaurantsListPage extends Component {
-
+    static navigationOptions = ({ navigation }) => ({
+        title: 'Risultati',
+    });
     constructor(props) {
         super(props);
         this.state = {
@@ -52,8 +54,8 @@ export default class RestaurantsListPage extends Component {
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={(rowData) =>
-                        <View>
-                            <Button title={rowData["NAME"]} onPress={() => {
+                        <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                            <Button style={{}} title={rowData["NAME"]} onPress={() => {
                                 navigate('RestaurantDetails', { id: rowData["ID"], name: rowData["NAME"] });
                             }} />
                             <Image style={{ width: 50, height: 50 }} source={{ uri: 'http:' + rowData["LOGO"] }} />
